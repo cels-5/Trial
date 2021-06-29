@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QWOP十種競技風得点計算機</title>
+    <link rel="stylesheet" type="text/css" href="../../css/bulma.min.css">
+    <script type="text/javascript">
+        function calc(){let point1,point2,point3,point4,point5;if(document.form1.val1.value>0&&document.form1.val1.value<=14){let a=30,b=14,c=1.8,kiroku=document.form1.val1.value;point1=Math.floor(a*Math.pow(b-kiroku,c))}else point1=0;if(document.form1.pts1.value=point1,document.form1.val2.value>0&&document.form1.val2.value<=180){let a=.074,b=180,c=1.95,kiroku=document.form1.val2.value;point2=Math.floor(a*Math.pow(b-kiroku,c))}else point2=0;if(document.form1.pts2.value=point2,document.form1.val3.value>0&&document.form1.val3.value<=700){let a=.0083,b=700,c=1.9,kiroku=document.form1.val3.value;point3=Math.floor(a*Math.pow(b-kiroku,c))}else point3=0;if(document.form1.pts3.value=point3,document.form1.val4.value>0&&document.form1.val4.value<=3e3){let a=.001032,b=3e3,c=1.8,kiroku=document.form1.val4.value;point4=Math.floor(a*Math.pow(b-kiroku,c))}else point4=0;if(document.form1.pts4.value=point4,document.form1.val5.value>0){let a=.0877,b=0,c=1.4,kiroku=document.form1.val5.value;point5=Math.floor(a*Math.pow(kiroku,c))}else point5=0;document.form1.pts5.value=point5,document.form1.pts_total1.value=point1+point2+point3+point4+point5}
+    </script>
+  </head>
+  <body>
+  <section class="hero is-warning is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div class="content">
+          <a href="../../index.html">
+            <h1 class="title">Trial</h1>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section is-midium">
+    <nav class="breadcrumb frp-breadcrumb" aria-label="breadcrumbs">
+      <ul>
+        <li>
+          <a href="../../index.html">TOP</a>
+        </li>
+        <li class="is-active">
+          <a href="/contents/qwop-calc/qwop-calc.html">QWOP十種競技風得点計算機</a>
+        </li>
+      </ul>
+    </nav>
+    <form action="" name="form1">
+      <table class="table is-bordered is-striped">
+        <tr>
+          <th>種目</th>
+          <th>記録</th>
+          <th>得点</th>
+        </tr>
+        <tr>
+          <td>10m(s)</td>
+          <td>
+            <input class="input is-small" type="number" name="val1" min=0 onchange="calc()">
+          </td>
+          <td>
+            <input class="input is-small" type="text" name="pts1" value="0" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>100m(s)</td>
+          <td>
+            <input class="input is-small" type="number" name="val2" min=0 onchange="calc()">
+          </td>
+          <td>
+            <input class="input is-small" type="text" name="pts2" value="0" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>400m(s)</td>
+          <td>
+            <input class="input is-small" type="number" name="val3" min=0 onchange="calc()">
+          </td>
+          <td>
+            <input class="input is-small" type="text" name="pts3" value="0" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>1500m(s)</td>
+          <td>
+            <input class="input is-small" type="number" name="val4" min=0 onchange="calc()">
+          </td>
+          <td>
+            <input class="input is-small" type="text" name="pts4" value="0" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>走り幅跳び(cm)</td>
+          <td>
+            <input class="input is-small" type="number" name="val5" min=0 onchange="calc()">
+          </td>
+          <td>
+            <input class="input is-small" type="text" name="pts5" value="0" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">合計</td>
+          <td>
+            <input class="input is-small" type="text" name="pts_total1" value="0" readonly>
+          </td>
+        </tr>
+      </table>
+      <input class="button is-dark is-outlined" type=reset value="リセット">
+    </form>
+    <div class="container">
+      <div class="content">
+        <h2 class="title">～ 使い方 ～</h2>
+        <p>"記録"行のテキストボックスに自身のタイムまたは距離を入力すると"得点"行に点数が出力されます。</p>
+        <p>走種目は分単位のタイムも秒単位に直して入力してください。幅跳びは最終記録から100m引いたものをcm単位に直して入力してください。（例：19分43秒=1183秒、105.4m=540cm）</p>
+        <p>リセットボタンで入力値を0にできます。</p>
+        <h2 class="title">～ 概要 ～</h2>
+        <p>十種競技の点数計算に用いられている指数関数を基に、QWOPの記録スケールに合わせて数値を調整した計算機です。</p>
+        <p>初めて2足歩行でゴールできる人のタイムを0点とし、現在の最高記録クラスが1000点前後となります。</p>
+        <p>それなりに練習を積んだ中級者は500点前後、800点を超えたあたりから上級者と呼んで差し支えない実力の持ち主と言えます。（個人の感想）</p>
+        <p>想定記録範囲は"10m 7~14秒","100m 47~175秒","400m 220~680秒","1500m 830~2900秒","LJ 0~800cm"</p>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="content has-text-centered">
+    </div>
+  </footer>
+  </body>
+</html>
